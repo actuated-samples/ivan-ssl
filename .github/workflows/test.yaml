@@ -16,7 +16,10 @@ jobs:
         runs-on: actuated
         steps:
         - uses: actions/checkout@v1
-        - name: Check the mount-runer
+        - name: Setup mirror
+          uses: self-actuated/hub-mirror@master
+
+        - name: Check the mount-runner
           run: |
             sudo journalctl -u mount-runner --no-pager
         - name: Show resolv file
