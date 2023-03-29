@@ -16,11 +16,21 @@ jobs:
         runs-on: actuated
         steps:
         - uses: actions/checkout@v1
+        - name: Check mount-runner
+          run: |
+            sudo journalctl -u mount-runner --no-pager
+        - name: Show resolv file
+          run: |
+            cat /etc/resolv.conf
         - name: Resolve with Docker
           run: |
             docker run \
               --rm \
               alpine:3.17.2 /bin/sh -c "cat /etc/resolv.conf"
+
+            docker run \
+              --rm \
+              alpine:3.17.2 /bin/sh -c "ping -c 1 google.com"
 
 # jobs:
 #     specs:
