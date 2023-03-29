@@ -16,6 +16,9 @@ jobs:
         runs-on: actuated
         steps:
         - uses: actions/checkout@v1
+        - name: Check the mount-runer
+          run: |
+            sudo journalctl -u mount-runner --no-pager
         - name: Show resolv file
           run: |
             cat /etc/resolv.conf
