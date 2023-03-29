@@ -19,7 +19,7 @@ jobs:
         - name: Show resolv file
           run: |
             cat /etc/resolv.conf
-            docker run -ti ubuntu:22.04 cat /etc/resolv.conf
+            docker run ubuntu:22.04 cat /etc/resolv.conf
 
         - name: Curl OpenSSL
           run: |
