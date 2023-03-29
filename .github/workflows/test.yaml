@@ -16,6 +16,11 @@ jobs:
         runs-on: actuated
         steps:
         - uses: actions/checkout@v1
+        - name: Show resolv file
+          run: |
+            cat /etc/resolv.conf
+            docker run -ti ubuntu:22.04 cat /etc/resolv.conf
+
         - name: Curl OpenSSL
           run: |
             curl -S -L -O https://www.openssl.org/source/openssl-3.0.1.tar.gz
