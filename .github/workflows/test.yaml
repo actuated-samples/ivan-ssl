@@ -13,17 +13,20 @@ on:
 jobs:
     specs:
         name: specs
-        runs-on: actuated-aarch64
+        runs-on: actuated
         steps:
         - uses: actions/checkout@v1
-        - name: Setup mirror
-          uses: self-actuated/hub-mirror@master
+#        - name: Setup mirror
+#          uses: self-actuated/hub-mirror@master
         - name: Check mount-runner
           run: |
             sudo journalctl -u mount-runner --no-pager
         - name: Show resolv file
           run: |
             cat /etc/resolv.conf
+        - name: Ping GitHub.com
+          run: |
+            ping -c 1 github.com
         - name: Resolve with Docker
           run: |
             docker run \
