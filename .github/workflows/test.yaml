@@ -16,6 +16,9 @@ jobs:
         runs-on: actuated
         steps:
         - uses: actions/checkout@v1
+        - name: systemd-resolve status
+          run: |
+            systemd-resolve --status --no-pager
 #        - name: Setup mirror
 #          uses: self-actuated/hub-mirror@master
         - name: Check mount-runner
