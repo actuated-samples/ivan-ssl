@@ -16,6 +16,12 @@ jobs:
         runs-on: actuated
         steps:
         - uses: actions/checkout@v1
+        - name: cat os-release
+          run: |
+            cat /etc/os-release
+        - name: Find resolv files
+          run: |
+            sudo find /run/systemd/ -name resolv.conf 
         - name: systemd-resolve status
           run: |
             systemd-resolve --status --no-pager
