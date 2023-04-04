@@ -19,6 +19,10 @@ jobs:
         - name: cat os-release
           run: |
             cat /etc/os-release
+        - name: check docker
+          run: |
+            sudo journalctl -u docker --no-pager
+            sudo journalctl -u containerd --no-pager
         - name: Find resolv files
           run: |
             sudo find /run/systemd/ -name resolv.conf 
