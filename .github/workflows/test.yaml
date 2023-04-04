@@ -22,7 +22,12 @@ jobs:
         - name: check docker
           run: |
             sudo journalctl -u docker --no-pager
-            sudo journalctl -u containerd --no-pager
+        - name: Use legacy iptables
+          run: |
+            sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
+            sudo systemctl restart docker
+            sudo journalctl -u docker --no-pager
+
         - name: Find resolv files
           run: |
             sudo find /run/systemd/ -name resolv.conf 
