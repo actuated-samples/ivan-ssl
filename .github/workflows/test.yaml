@@ -16,6 +16,9 @@ jobs:
         runs-on: actuated
         steps:
         - uses: actions/checkout@v1
+        - name: show entropy
+          run: |
+            sudo cat /proc/sys/kernel/random/entropy_avail
         - name: cat os-release
           run: |
             cat /etc/os-release
